@@ -1,4 +1,4 @@
-from python:3.15.0rc2-alpine3.24
+FROM python:3.10.8-slim
 
 LABEL maintainer="petropavliuk12.05@gmail.com"
 
@@ -7,8 +7,8 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR app/
 
 COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY app/ .
 
-CMD ["python", "-u", "app/main.py"]
+CMD ["python", "-u", "main.py"]
